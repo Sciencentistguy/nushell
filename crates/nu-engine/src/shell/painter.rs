@@ -46,7 +46,7 @@ impl Painter {
 
     fn paint(&mut self, styled_span: &Spanned<Style>) {
         for pos in styled_span.span.start()..styled_span.span.end() {
-            self.styles[pos] = styled_span.item;
+            self.styles.get_mut(pos).map(|x| *x = styled_span.item);
         }
     }
 
